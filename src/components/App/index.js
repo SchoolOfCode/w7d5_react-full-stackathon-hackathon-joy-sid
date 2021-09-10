@@ -5,6 +5,7 @@ import Button from "../Button";
 
 function App() {
   const [catInfo, setCatInfo] = useState({ imageUrl: "" });
+  const [cocktailInfo, setCocktailInfo] = useState({ imageUrl: "" });
   const [id, setId] = useState(1);
 
   /* function createRandomId() {
@@ -30,6 +31,20 @@ function App() {
     getCatInfo();
   }, [id]);
 
+  useEffect(() => {
+    async function getCocktailInfo() {
+      const res = await fetch(
+        `https://www.thecocktaildb.com/api/json/v1/1/random.php`
+      );
+
+      const data = await res.json();
+      console.log("data", data);
+      // console.log("cocktails", data.drinks[0].strDrinkThumb);
+      setCocktailInfo({ imageUrl: data.drinks[0].strDrinkThumb });
+    }
+    getCocktailInfo();
+  }, [id]);
+
   function onClick() {
     console.log(id);
     let newId = id + 1;
@@ -38,7 +53,16 @@ function App() {
 
   return (
     <div className="App">
-      <DisplayContent imageUrl={catInfo.imageUrl} />
+      <DisplayContent
+        imageUrl={catInfo.imageUrl}
+        altText={"here is a cats"}
+        text={"Cats"}
+      />
+      <DisplayContent
+        imageUrl={cocktailInfo.imageUrl}
+        altText={"here is a cocktail"}
+        text={"Cocktails"}
+      />
       <Button onClick={onClick} />
     </div>
   );

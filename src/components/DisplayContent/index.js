@@ -5,11 +5,11 @@
 
 import React from "react";
 
-function DisplayContent({ imageUrl }) {
+function DisplayContent({ imageUrl, altText, text }) {
   return (
     <section>
-      <img src={imageUrl} alt="cat" />
-      <h3>Here is the cat</h3>
+      <img src={imageUrl} alt={altText} style={{ maxWidth: "500px" }} />
+      <h3>{text}</h3>
     </section>
   );
 }
