@@ -20,7 +20,7 @@ cat image API needs an API key in the header, second parameter of a fetch.
 ### State and Component plan for MVP
 
 - State: for cat info with image and breed
-  catInfo, will hold an object with an image URL and the cat breed name as a string and an id
+  catInfo, will hold an object with an image URL and the cat breed name as a string and an id -done
   useEffect that gets a new cat when the button is called. Starting state has an id.
   useEffect to update the state with specific key-value pairs of the returned JSON from the cats API
 
