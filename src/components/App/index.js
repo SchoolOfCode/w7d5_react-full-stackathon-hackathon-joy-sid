@@ -1,16 +1,17 @@
 import "./App.css";
 import DisplayContent from "../DisplayContent";
 import React, { useState, useEffect } from "react";
+import Button from "../Button";
 
 function App() {
-  const [catInfo, setCatInfo] = useState({ imageUrl: "", text: "" });
+  const [catInfo, setCatInfo] = useState({ imageUrl: "" });
   const [id, setId] = useState(1);
 
-  // function createRandomId() {
-  //   // create a var and use the math.random to generate a random number and use math.floor to round off the number
-  //   const id = Math.ceil(Math.random() * 11);
-  //   setId(id);
-  // }
+  /* function createRandomId() {
+    // create a var and use the math.random to generate a random number and use math.floor to round off the number
+    const id = Math.ceil(Math.random() * 11);
+    setId(id);
+  }*/
 
   //declare a var called res and assign fetch request to it and add the id in template literals to generate results
   useEffect(() => {
@@ -24,14 +25,21 @@ function App() {
       const data = await res.json();
       // Set Catinfo to data from data
       console.log(data);
-      setCatInfo({ imageUrl: data.url, text: data.breeds.name });
+      setCatInfo({ imageUrl: data[0].url });
     }
     getCatInfo();
   }, [id]);
 
+  function onClick() {
+    console.log(id);
+    let newId = id + 1;
+    setId(newId);
+  }
+
   return (
     <div className="App">
-      <DisplayContent imageUrl={catInfo.imageUrl} text={catInfo.text} />
+      <DisplayContent imageUrl={catInfo.imageUrl} />
+      <Button onClick={onClick} />
     </div>
   );
 }

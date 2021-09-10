@@ -5,11 +5,11 @@
 
 import React from "react";
 
-function DisplayContent({ imageUrl, text }) {
+function DisplayContent({ imageUrl }) {
   return (
     <section>
       <img src={imageUrl} />
-      <h3>{text}</h3>
+      <h3></h3>
     </section>
   );
 }
