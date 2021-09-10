@@ -6,6 +6,7 @@ import Button from "../Button";
 function App() {
   const [catInfo, setCatInfo] = useState({ imageUrl: "" });
   const [cocktailInfo, setCocktailInfo] = useState({ imageUrl: "" });
+  const [cocktailName, setCocktailName] = useState("");
   const [id, setId] = useState(1);
 
   /* function createRandomId() {
@@ -41,6 +42,7 @@ function App() {
       console.log("data", data);
       // console.log("cocktails", data.drinks[0].strDrinkThumb);
       setCocktailInfo({ imageUrl: data.drinks[0].strDrinkThumb });
+      setCocktailName(data.drinks[0].strDrink);
     }
     getCocktailInfo();
   }, [id]);
@@ -61,7 +63,7 @@ function App() {
       <DisplayContent
         imageUrl={cocktailInfo.imageUrl}
         altText={"here is a cocktail"}
-        text={"Cocktails"}
+        text={cocktailName}
       />
       <Button onClick={onClick} />
     </div>
