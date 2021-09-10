@@ -8,8 +8,8 @@ import React from "react";
 function DisplayContent({ imageUrl }) {
   return (
     <section>
-      <img src={imageUrl} />
-      <h3></h3>
+      <img src={imageUrl} alt="cat" />
+      <h3>Here is the cat</h3>
     </section>
   );
 }
